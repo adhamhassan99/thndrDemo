@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "thndrDemo",
-    "slug": "thndrDemo",
+    "slug": "thndrapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "754ecd46-f9b2-484e-8069-6d217c61e519"
+      }
+    },
+    "owner": "adhamhassan"
   }
 }

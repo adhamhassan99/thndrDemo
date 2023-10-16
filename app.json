@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "thndrDemo",
+    "name": "Thndr App",
     "slug": "thndrapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -31,6 +31,12 @@
         "projectId": "754ecd46-f9b2-484e-8069-6d217c61e519"
       }
     },
-    "owner": "adhamhassan"
+    "owner": "adhamhassan",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/754ecd46-f9b2-484e-8069-6d217c61e519"
+    }
   }
 }

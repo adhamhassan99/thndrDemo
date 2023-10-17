@@ -1,30 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
 
-import { HomeHeader, SearchBar, StockCard } from './src/components';
+import HomePage from './src/screens/HomePage';
 
 export default function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <HomeHeader />
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-        <SearchBar />
-        <View style={{ flexDirection: 'row', gap: 20 }}>
-          <StockCard company="Apple" ticker="AAPL" />
-          <StockCard company="Apple" ticker="AAPL" />
-        </View>
-      </View>
+      <QueryClientProvider client={queryClient}>
+        <HomePage />
+      </QueryClientProvider>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1F202F',
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

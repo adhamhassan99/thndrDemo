@@ -5,6 +5,7 @@
     "**/*.tsx"
   ],
   "compilerOptions": {
+    "jsx": "react",
     "strict": true,
     
   }

@@ -20,7 +20,9 @@ const StockCard = ({ company, ticker, onPress }: Props) => {
       style={styles.container}>
       <Image source={Images.apple} />
       <Text style={styles.ticker}>{ticker}</Text>
-      <Text style={styles.company}>{company}</Text>
+      <Text numberOfLines={1} ellipsizeMode="tail" style={styles.company}>
+        {company}
+      </Text>
     </Pressable>
   );
 };
@@ -37,6 +39,8 @@ const styles = StyleSheet.create({
     gap: 15,
     borderWidth: 1,
     borderColor: '#323443',
+    marginBottom: 20,
+    marginHorizontal: 10,
   },
   ticker: {
     color: 'white',
@@ -47,5 +51,6 @@ const styles = StyleSheet.create({
     color: 'white',
     opacity: 0.7,
     fontSize: 12,
+    maxWidth: '70%',
   },
 });

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, Image, StyleSheet, Pressable, Linking } from 'react-native';
+import { Text, Image, StyleSheet, Pressable } from 'react-native';
 
 import Images from '../../assets/Images';
+import PlaceholderAvatar from './PlaceholderAvatar';
 
 type Props = {
   ticker: string;
@@ -11,14 +12,8 @@ type Props = {
 
 const StockCard = ({ company, ticker, onPress }: Props) => {
   return (
-    <Pressable
-      onPress={() =>
-        Linking.openURL('https://www.google.com')
-          .then(data => console.log(data))
-          .catch(e => console.log(e))
-      }
-      style={styles.container}>
-      <Image source={Images.apple} />
+    <Pressable onPress={onPress} style={styles.container}>
+      <PlaceholderAvatar ticker={ticker} />
       <Text style={styles.ticker}>{ticker}</Text>
       <Text numberOfLines={1} ellipsizeMode="tail" style={styles.company}>
         {company}

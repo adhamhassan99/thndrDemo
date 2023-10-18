@@ -1,3 +1,11 @@
 export { default as StockCard } from './StockCard';
 export { default as SearchBar } from './SearchBar';
 export { default as HomeHeader } from './HomeHeader';
+export { default as CustomBtn } from './CustomBtn';
+export { default as StatisticsColumn } from './StatisticsColumn';
+export { default as StatisticsSection } from './StatisticsSection';
+export { default as PlaceholderAvatar } from './PlaceholderAvatar';
+export { default as DetailHeaderSection } from './DetailHeaderSection';
+export { default as AboutSection } from './AboutSection';
+export { default as HeaderTitle } from './HeaderTitle';
+export { default as SheetCloseBtn } from './SheetCloseBtn';

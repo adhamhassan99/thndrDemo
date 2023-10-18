@@ -2,11 +2,11 @@ export interface IGetAllTickers {
   count: number;
   next_url: string;
   request_id: string;
-  results: Result[];
+  results: IResult[];
   status: string;
 }
 
-interface Result {
+export interface IResult {
   active: boolean;
   cik: string;
   composite_figi: string;

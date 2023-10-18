@@ -3,7 +3,6 @@ import React from 'react';
 // import { SheetProvider } from 'react-native-actions-sheet';
 
 import HomePage from './src/screens/HomePage';
-import './sheets';
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -11,9 +10,7 @@ export default function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        {/* <SheetProvider> */}
         <HomePage />
-        {/* </SheetProvider> */}
       </QueryClientProvider>
     </>
   );

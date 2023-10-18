@@ -10,11 +10,11 @@ export default function App() {
 
   return (
     <>
-      <SheetProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <SheetProvider>
           <HomePage />
-        </QueryClientProvider>
-      </SheetProvider>
+        </SheetProvider>
+      </QueryClientProvider>
     </>
   );
 }

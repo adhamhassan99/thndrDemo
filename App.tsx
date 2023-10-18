@@ -1,8 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
+import { SheetProvider } from 'react-native-actions-sheet';
 
-import './src/sheets/sheets';
 import HomePage from './src/screens/HomePage';
+import './src/sheets/sheets';
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -10,7 +11,9 @@ export default function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <HomePage />
+        <SheetProvider>
+          <HomePage />
+        </SheetProvider>
       </QueryClientProvider>
     </>
   );

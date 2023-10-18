@@ -1,7 +1,7 @@
 import { FlashList } from '@shopify/flash-list';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { SheetManager } from 'react-native-actions-sheet';
+// import { SheetManager } from 'react-native-actions-sheet';
 
 import { HomeHeader, SearchBar, StockCard } from '../components';
 import { useGetTickerDetail, useGetTickers } from '../hooks';
@@ -37,11 +37,11 @@ const HomePage = () => {
   useEffect(() => {
     setSelectedTicker('');
     if (TickerDetails?.results) {
-      SheetManager.show('TickerDetailSheet', {
-        payload: { ...TickerDetails.results },
-      });
+      // SheetManager.show('TickerDetailSheet', {
+      //   payload: { ...TickerDetails.results },
+      // });
     } else {
-      detailsError && SheetManager.show('ApiExceededSheet');
+      // detailsError && SheetManager.show('ApiExceededSheet');
     }
   }, [TickerDetails, detailsError]);
 

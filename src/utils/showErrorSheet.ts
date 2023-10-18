@@ -1,6 +1,6 @@
-import { SheetManager } from 'react-native-actions-sheet';
+// import { SheetManager } from 'react-native-actions-sheet';
 
 const showErrorSheet = () => {
-  SheetManager.show('ApiExceededSheet');
+  // SheetManager.show('ApiExceededSheet');
 };
 export default showErrorSheet;

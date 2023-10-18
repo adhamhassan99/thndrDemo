@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet } from 'react-native';
-import { SheetManager } from 'react-native-actions-sheet';
+// import { SheetManager } from 'react-native-actions-sheet';
 
 import Images from '../../assets/Images';
 
 const SheetCloseBtn = () => {
   return (
     <Pressable
-      onPress={() => SheetManager.hide('TickerDetailSheet')}
+      // onPress={() => SheetManager.hide('TickerDetailSheet')}
       style={styles.container}>
       <Image source={Images.close} />
     </Pressable>

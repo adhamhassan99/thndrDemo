@@ -66,7 +66,7 @@ const HomePage = () => {
         <View style={styles.searchContainer}>
           <SearchBar value={searchValue} onChange={setSearchValue} />
         </View>
-        <View style={{ flex: 1 }}>
+        {/* <View style={{ flex: 1 }}>
           <FlashList
             onRefresh={refetch}
             refreshing={isRefetching}
@@ -86,7 +86,7 @@ const HomePage = () => {
               // <LoadingPlaceholder isLoading={isLoading} />
             )}
           />
-        </View>
+        </View> */}
       </View>
     </>
   );

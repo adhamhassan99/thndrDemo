@@ -1,9 +1,9 @@
-// import { registerSheet } from 'react-native-actions-sheet';
+import { registerSheet } from 'react-native-actions-sheet';
 
-// import ApiExceededSheet from './ApiExceededSheet';
-// import TickerDetailSheet from './TickerDetailSheet';
+import ApiExceededSheet from './ApiExceededSheet';
+import TickerDetailSheet from './TickerDetailSheet';
 
-// registerSheet('TickerDetailSheet', TickerDetailSheet);
-// registerSheet('ApiExceededSheet', ApiExceededSheet);
+registerSheet('TickerDetailSheet', TickerDetailSheet);
+registerSheet('ApiExceededSheet', ApiExceededSheet);
 
-// export {};
+export {};

@@ -23,7 +23,9 @@
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "0.72.5",
-    "react-native-actions-sheet": "^0.9.0-alpha.24"
+    "react-native-actions-sheet": "^0.9.0-alpha.24",
+    "react-native-reanimated": "~3.3.0",
+    "react-native-gesture-handler": "~2.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

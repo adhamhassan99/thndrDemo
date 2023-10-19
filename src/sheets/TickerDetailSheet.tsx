@@ -1,6 +1,5 @@
 import React from 'react';
 import { Linking, StyleSheet, View } from 'react-native';
-import ActionSheet, { SheetProps } from 'react-native-actions-sheet';
 
 import {
   AboutSection,
@@ -10,32 +9,40 @@ import {
 } from '../components';
 import { IDetailResults } from '../types/getTickerDetails';
 
-const TickerDetailSheet = (props: SheetProps) => {
-  const { branding, description, homepage_url, name, ticker, market_cap } =
-    props.payload as IDetailResults;
+type Props = {
+  data: IDetailResults;
+  handleCloseSheet: () => void;
+};
 
-  const handleWebsitePress = () => {
-    Linking.openURL(homepage_url ?? `https://www.google.com/search?q=${name}`);
-  };
+const TickerDetailSheet = (props: Props) => {
+  if (props.data) {
+    console.log(props);
+    const { branding, description, homepage_url, name, ticker, market_cap } =
+      props.data as IDetailResults;
 
-  return (
-    <ActionSheet
-      containerStyle={styles.sheetContainer}
-      overlayColor="#0a0a10"
-      id="TickerDetailSheet">
-      <DetailHeaderSection
-        branding={branding}
-        ticker={ticker}
-        price={market_cap}
-      />
-      <AboutSection description={description} />
-      <StatisticsSection />
+    const handleWebsitePress = () => {
+      Linking.openURL(
+        homepage_url ?? `https://www.google.com/search?q=${name}`,
+      );
+    };
 
-      <View style={{ marginTop: 'auto', marginBottom: 20 }}>
-        <CustomBtn onPress={handleWebsitePress} />
+    return (
+      <View style={styles.sheetContainer}>
+        <DetailHeaderSection
+          handleCloseSheet={props.handleCloseSheet}
+          branding={branding}
+          ticker={ticker}
+          price={market_cap}
+        />
+        <AboutSection description={description} />
+        <StatisticsSection />
+
+        <View style={{ marginTop: 'auto', marginBottom: 20 }}>
+          <CustomBtn onPress={handleWebsitePress} />
+        </View>
       </View>
-    </ActionSheet>
-  );
+    );
+  }
 };
 
 export default TickerDetailSheet;
@@ -46,7 +53,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
 
     backgroundColor: '#242639',
-    minHeight: '70%',
   },
   statisticsContainer: {
     marginBottom: 50,

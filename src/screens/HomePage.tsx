@@ -1,14 +1,25 @@
 import { FlashList } from '@shopify/flash-list';
-import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 // import { SheetManager } from 'react-native-actions-sheet';
 
 import { HomeHeader, SearchBar, StockCard } from '../components';
 import { useGetTickerDetail, useGetTickers } from '../hooks';
 import { IResult } from '../types/getAllTickers';
 import { showErrorSheet } from '../utils';
+import TickerDetailSheet from '../sheets/TickerDetailSheet';
+import { ActionSheetRef } from 'react-native-actions-sheet';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 const HomePage = () => {
+  const TickerDetailSheetRef = useRef<BottomSheet>(null);
+
   const [searchValue, setSearchValue] = useState('');
   const [nextPageUrl, setNextPageUrl] = useState('');
   const [selectedTicker, setSelectedTicker] = useState('');
@@ -40,10 +51,11 @@ const HomePage = () => {
       // SheetManager.show('TickerDetailSheet', {
       //   payload: { ...TickerDetails.results },
       // });
+      TickerDetailSheetRef.current?.expand();
     } else {
       // detailsError && SheetManager.show('ApiExceededSheet');
     }
-  }, [TickerDetails, detailsError]);
+  }, [TickerDetails, detailsError, TickerDetailSheetRef]);
 
   const filteredData = allData.filter(
     item =>
@@ -57,6 +69,10 @@ const HomePage = () => {
     },
     [selectedTicker, isTickerDetailsLoading],
   );
+
+  const handleCloseSheet = () => {
+    TickerDetailSheetRef.current?.close();
+  };
 
   return (
     <>
@@ -88,6 +104,19 @@ const HomePage = () => {
           />
         </View>
       </View>
+
+      <BottomSheet
+        backgroundStyle={{ backgroundColor: '#242639' }}
+        ref={TickerDetailSheetRef}
+        snapPoints={['75%']}
+        index={-1}>
+        {TickerDetails?.results && (
+          <TickerDetailSheet
+            handleCloseSheet={handleCloseSheet}
+            data={TickerDetails?.results}
+          />
+        )}
+      </BottomSheet>
     </>
   );
 };

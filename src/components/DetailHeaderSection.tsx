@@ -10,9 +10,15 @@ type Props = {
   branding: IBranding;
   ticker: string;
   price: number;
+  handleCloseSheet: () => void;
 };
 
-const DetailHeaderSection = ({ branding, ticker, price }: Props) => {
+const DetailHeaderSection = ({
+  branding,
+  ticker,
+  price,
+  handleCloseSheet,
+}: Props) => {
   const brandPic = () => {
     if (branding) {
       return branding.icon_url ?? branding.logo_url;
@@ -40,7 +46,7 @@ const DetailHeaderSection = ({ branding, ticker, price }: Props) => {
           percentage={price ? 2.5 : -4.9}
         />
       </View>
-      <SheetCloseBtn />
+      <SheetCloseBtn handleCloseSheet={handleCloseSheet} />
     </View>
   );
 };

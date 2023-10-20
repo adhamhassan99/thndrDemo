@@ -9,6 +9,7 @@ import { useGetTickerDetail, useGetTickers } from '../hooks';
 import TickerDetailSheet from '../sheets/TickerDetailSheet';
 import { IResult } from '../types/getAllTickers';
 import { showErrorSheet } from '../utils';
+import LoadingLayout from './LoadingLayout';
 
 const HomePage = () => {
   const TickerDetailSheetRef = useRef<BottomSheet>(null);

@@ -10,13 +10,12 @@ import {
 import { IDetailResults } from '../types/getTickerDetails';
 
 type Props = {
-  data: IDetailResults;
+  data?: IDetailResults;
   handleCloseSheet: () => void;
 };
 
 const TickerDetailSheet = (props: Props) => {
   if (props.data) {
-    console.log(props);
     const { branding, description, homepage_url, name, ticker, market_cap } =
       props.data as IDetailResults;
 

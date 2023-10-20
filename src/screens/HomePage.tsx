@@ -1,21 +1,14 @@
+import BottomSheet from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
-import React, {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 // import { SheetManager } from 'react-native-actions-sheet';
 
 import { HomeHeader, SearchBar, StockCard } from '../components';
 import { useGetTickerDetail, useGetTickers } from '../hooks';
+import TickerDetailSheet from '../sheets/TickerDetailSheet';
 import { IResult } from '../types/getAllTickers';
 import { showErrorSheet } from '../utils';
-import TickerDetailSheet from '../sheets/TickerDetailSheet';
-import { ActionSheetRef } from 'react-native-actions-sheet';
-import BottomSheet from '@gorhom/bottom-sheet';
 
 const HomePage = () => {
   const TickerDetailSheetRef = useRef<BottomSheet>(null);
@@ -30,6 +23,7 @@ const HomePage = () => {
     data: allTickers,
     refetch,
     isRefetching,
+    isLoading: allTickersLoading,
   } = useGetTickers(nextPageUrl);
   const {
     error: detailsError,
@@ -46,11 +40,7 @@ const HomePage = () => {
   }, [allTickers, allTickersError]);
 
   useEffect(() => {
-    setSelectedTicker('');
     if (TickerDetails?.results) {
-      // SheetManager.show('TickerDetailSheet', {
-      //   payload: { ...TickerDetails.results },
-      // });
       TickerDetailSheetRef.current?.expand();
     } else {
       // detailsError && SheetManager.show('ApiExceededSheet');
@@ -65,19 +55,21 @@ const HomePage = () => {
 
   const handlePress = useCallback(
     (ticker: string) => {
-      !isTickerDetailsLoading && setSelectedTicker(ticker);
+      ticker === selectedTicker
+        ? TickerDetailSheetRef.current?.expand()
+        : !isTickerDetailsLoading && setSelectedTicker(ticker);
     },
     [selectedTicker, isTickerDetailsLoading],
   );
 
   const handleCloseSheet = () => {
+    setSelectedTicker('');
     TickerDetailSheetRef.current?.close();
   };
 
   return (
     <>
       <HomeHeader />
-      {isTickerDetailsLoading && <ActivityIndicator />}
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <SearchBar value={searchValue} onChange={setSearchValue} />
@@ -106,16 +98,15 @@ const HomePage = () => {
       </View>
 
       <BottomSheet
+        enablePanDownToClose
         backgroundStyle={{ backgroundColor: '#242639' }}
         ref={TickerDetailSheetRef}
         snapPoints={['75%']}
         index={-1}>
-        {TickerDetails?.results && (
-          <TickerDetailSheet
-            handleCloseSheet={handleCloseSheet}
-            data={TickerDetails?.results}
-          />
-        )}
+        <TickerDetailSheet
+          handleCloseSheet={handleCloseSheet}
+          data={TickerDetails?.results}
+        />
       </BottomSheet>
     </>
   );

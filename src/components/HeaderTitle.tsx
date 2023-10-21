@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { COLORS } from '../constants/theme';
+
 type Props = {
   title: string;
   price: number;
@@ -49,9 +51,9 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   positive: {
-    color: '#22FF95',
+    color: COLORS.successGreen,
   },
   negative: {
-    color: '#da3f07',
+    color: COLORS.errorRed,
   },
 });

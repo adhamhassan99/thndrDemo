@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { COLORS } from '../constants/theme';
+
 type Props = {
   ticker: string;
 };
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     borderRadius: 10,
   },
   text: {

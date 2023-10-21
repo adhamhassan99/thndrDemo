@@ -1,15 +1,16 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 import Images from '../../assets/Images';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { COLORS } from '../constants/theme';
 import { MainStackParamList } from '../navigators/MainNavigator';
 
 const Landing = () => {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
 
   useEffect(() => {
-    let timer = setTimeout(() => navigation.navigate('HomePage'), 3000);
+    const timer = setTimeout(() => navigation.navigate('HomePage'), 3000);
 
     return () => {
       clearTimeout(timer);
@@ -18,12 +19,7 @@ const Landing = () => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+      <View style={styles.logoContainer}>
         <Image source={Images.mainLogo} />
       </View>
 
@@ -39,13 +35,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1F202F',
+    backgroundColor: COLORS.primaryBlueDefault,
     paddingTop: 20,
     paddingBottom: 40,
   },
   credits: {
-    // marginTop: 'auto',
     textAlign: 'center',
-    color: 'white',
+    color: COLORS.white,
+  },
+  logoContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

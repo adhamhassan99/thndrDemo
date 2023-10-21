@@ -1,15 +1,16 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-// import { SheetManager } from 'react-native-actions-sheet';
+import { Image, StyleSheet, View } from 'react-native';
 
+import Images from '../../assets/Images';
 import { HomeHeader, SearchBar, StockCard } from '../components';
+import { layouts } from '../constants/styles';
+import { COLORS } from '../constants/theme';
 import { useGetTickerDetail, useGetTickers } from '../hooks';
 import TickerDetailSheet from '../sheets/TickerDetailSheet';
 import { IResult } from '../types/getAllTickers';
 import { showErrorSheet } from '../utils';
-import LoadingLayout from './LoadingLayout';
 
 const HomePage = () => {
   const TickerDetailSheetRef = useRef<BottomSheet>(null);
@@ -24,7 +25,6 @@ const HomePage = () => {
     data: allTickers,
     refetch,
     isRefetching,
-    isLoading: allTickersLoading,
   } = useGetTickers(nextPageUrl);
   const {
     error: detailsError,
@@ -75,7 +75,8 @@ const HomePage = () => {
         <View style={styles.searchContainer}>
           <SearchBar value={searchValue} onChange={setSearchValue} />
         </View>
-        <View style={{ flex: 1 }}>
+
+        <View style={[layouts.flexed]}>
           <FlashList
             onRefresh={refetch}
             refreshing={isRefetching}
@@ -84,6 +85,11 @@ const HomePage = () => {
             estimatedItemSize={178}
             numColumns={2}
             data={filteredData}
+            ListEmptyComponent={
+              <View style={styles.notfoundContainer}>
+                <Image source={Images.notFound} />
+              </View>
+            }
             renderItem={item => (
               <StockCard
                 onPress={() =>
@@ -92,17 +98,15 @@ const HomePage = () => {
                 company={item.item.name}
                 ticker={item.item.ticker}
               />
-              // <LoadingPlaceholder isLoading={isLoading} />
             )}
           />
         </View>
       </View>
 
       <BottomSheet
-        enablePanDownToClose
-        backgroundStyle={{ backgroundColor: '#242639' }}
+        backgroundStyle={styles.sheetContainer}
         ref={TickerDetailSheetRef}
-        snapPoints={['75%']}
+        snapPoints={['80%']}
         index={-1}>
         <TickerDetailSheet
           handleCloseSheet={handleCloseSheet}
@@ -117,12 +121,20 @@ export default HomePage;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#1F202F',
+    ...layouts.flexed,
+    backgroundColor: COLORS.primaryBlueDefault,
     paddingHorizontal: 10,
   },
   searchContainer: {
     paddingHorizontal: 10,
     marginVertical: 20,
+  },
+  sheetContainer: {
+    backgroundColor: COLORS.primaryBlueLightest,
+  },
+  notfoundContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

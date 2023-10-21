@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, Image, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet, Pressable } from 'react-native';
 
-import Images from '../../assets/Images';
 import PlaceholderAvatar from './PlaceholderAvatar';
+import { COLORS } from '../constants/theme';
 
 type Props = {
   ticker: string;
@@ -26,24 +26,24 @@ export default StockCard;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#242639',
+    backgroundColor: COLORS.primaryBlueLightest,
     flex: 1,
     alignItems: 'center',
     paddingVertical: 20,
     borderRadius: 20,
     gap: 15,
     borderWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     marginBottom: 20,
     marginHorizontal: 10,
   },
   ticker: {
-    color: 'white',
+    color: COLORS.white,
     fontWeight: '700',
     fontSize: 16,
   },
   company: {
-    color: 'white',
+    color: COLORS.white,
     opacity: 0.7,
     fontSize: 12,
     maxWidth: '70%',

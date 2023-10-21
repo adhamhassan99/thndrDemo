@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { VALUES } from '../constants';
+import { COLORS } from '../constants/theme';
 type Props = {
   description: string;
 };
@@ -21,12 +22,12 @@ export default AboutSection;
 
 const styles = StyleSheet.create({
   about: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 15,
     fontWeight: '700',
   },
   desc: {
-    color: '#fff',
+    color: COLORS.white,
     opacity: 0.6,
     fontSize: 14,
   },
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
   bottomLine: {
     borderBottomWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     paddingVertical: 25,
   },
 });

@@ -1,6 +1,8 @@
 import React, { SetStateAction } from 'react';
 import { Pressable, StyleSheet, TextInput } from 'react-native';
 
+import { COLORS } from '../constants/theme';
+
 type Props = {
   value: string;
   onChange: React.Dispatch<SetStateAction<string>>;
@@ -24,9 +26,9 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#242639',
+    backgroundColor: COLORS.primaryBlueLightest,
     borderWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     width: '100%',
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -35,6 +37,6 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: 16,
     padding: 0,
-    color: 'white',
+    color: COLORS.white,
   },
 });

@@ -3,6 +3,7 @@ import { Image, Pressable, StyleSheet } from 'react-native';
 // import { SheetManager } from 'react-native-actions-sheet';
 
 import Images from '../../assets/Images';
+import { COLORS } from '../constants/theme';
 
 const SheetCloseBtn = ({
   handleCloseSheet,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderRadius: 50,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     padding: 15,
   },
 });

@@ -7,6 +7,7 @@ import {
   DetailHeaderSection,
   StatisticsSection,
 } from '../components';
+import { COLORS } from '../constants/theme';
 import { IDetailResults } from '../types/getTickerDetails';
 
 type Props = {
@@ -36,7 +37,7 @@ const TickerDetailSheet = (props: Props) => {
         <AboutSection description={description} />
         <StatisticsSection />
 
-        <View style={{ marginTop: 'auto', marginBottom: 20 }}>
+        <View style={styles.btnContainer}>
           <CustomBtn onPress={handleWebsitePress} />
         </View>
       </View>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
 
-    backgroundColor: '#242639',
+    backgroundColor: COLORS.primaryBlueLightest,
   },
   statisticsContainer: {
     marginBottom: 50,
@@ -59,4 +60,5 @@ const styles = StyleSheet.create({
   statisticContainer: {
     flexDirection: 'row',
   },
+  btnContainer: { marginTop: 'auto', marginBottom: 20 },
 });

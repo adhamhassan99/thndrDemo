@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import HeaderTitle from './HeaderTitle';
 import PlaceholderAvatar from './PlaceholderAvatar';
 import SheetCloseBtn from './SheetCloseBtn';
+import { COLORS } from '../constants/theme';
 import { IBranding } from '../types/getTickerDetails';
 
 type Props = {
@@ -29,7 +30,7 @@ const DetailHeaderSection = ({
       <View style={styles.leftContainer}>
         {branding ? (
           <Image
-            style={{ width: 50, height: 50, borderRadius: 5 }}
+            style={styles.brandStyle}
             source={{
               uri: brandPic(),
               headers: {
@@ -58,12 +59,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   about: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 15,
     fontWeight: '700',
   },
   desc: {
-    color: '#fff',
+    color: COLORS.white,
     opacity: 0.6,
     fontSize: 14,
   },
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
   },
   bottomLine: {
     borderBottomWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     paddingVertical: 25,
   },
   leftContainer: {
@@ -84,4 +85,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  brandStyle: { width: 50, height: 50, borderRadius: 5 },
 });

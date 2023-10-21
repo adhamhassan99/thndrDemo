@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import StatisticsColumn from './StatisticsColumn';
+import { COLORS } from '../constants/theme';
 
 const StatisticsSection = () => {
   return (
@@ -40,7 +41,7 @@ export default StatisticsSection;
 const styles = StyleSheet.create({
   bottomLine: {
     borderBottomWidth: 1,
-    borderColor: '#323443',
+    borderColor: COLORS.mainBorderColor,
     paddingVertical: 25,
   },
   statisticsContainer: {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   title: {
-    color: 'white',
+    color: COLORS.white,
     fontWeight: '700',
     fontSize: 15,
     marginBottom: 20,
